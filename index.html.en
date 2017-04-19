@@ -17,4 +17,5 @@
 
  <body>
    <script src="js/scripts.js"></script>
+   <div id="circle"></div>
  </body>
