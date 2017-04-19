@@ -2,6 +2,7 @@
 
 var eventCount = 0;
 var eventProperty = [];
+var circle = new Circle ('circle');
 
 var TrackMouse = function (mouseEvent) {
     eventProperty[eventCount++] = {
@@ -16,14 +17,12 @@ var TrackMouse = function (mouseEvent) {
     			+ ", X: " + mouseEvent.x
     			+ ", Y: " + mouseEvent.y
     			+ "\n");
+    circle.moveCenter(mouseEvent.x, mouseEvent.y);
+};
 
-    var cicle = document.getElementById("circle");
-    console.log("Id: " + circle.id);
-    console.log("Before: " + circle.style.left + " " + circle.style.top);
-    circle.style.left = mouseEvent.x + 'px';
-    circle.style.top = mouseEvent.y + 'px';
-    console.log("After: " + circle.style.left + " " + circle.style.top);
-
+var GravityUpdate = function () {
+  circle.update();
 };
 
 document.addEventListener('click', TrackMouse);
+setInterval (GravityUpdate, 2000);

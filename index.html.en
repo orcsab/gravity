@@ -16,6 +16,10 @@
  </head>
 
  <body>
-   <script src="js/scripts.js"></script>
+
+
    <div id="circle"></div>
+
+   <script src="js/circle.js"></script>
+   <script src="js/scripts.js"></script>
  </body>
