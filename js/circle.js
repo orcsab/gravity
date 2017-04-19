@@ -17,7 +17,7 @@ function Circle (id) {
   this.update = function () {
     console.log('velocity: ' + this.xVel + ' ' + this.yVel);
     var spacials = this.getSpacials();
-    this.move(spacials.left + this.xVel, spacials.y + this.yVel);
+    this.move(spacials.left + this.xVel, spacials.top + this.yVel);
   };
 
   this.move = function (left, top) {
@@ -29,6 +29,19 @@ function Circle (id) {
     var spacials = this.getSpacials();
     this.move(centerX - spacials.width/2, centerY - spacials.height/2);
   };
+
+  this.accelerate = function (x, y, damp = 10) {
+    console.log("accelerate: " + x + " " + y);
+    var spacials = this.getSpacials();
+
+    console.log("spacials: " + spacials.centerX + " " + spacials.centerY);
+    var xDiff = x - spacials.centerX;
+    var yDiff = y - spacials.centerY;
+
+    console.log("difference: " + xDiff + " " + yDiff);
+    this.xVel += (xDiff / damp);
+    this.yVel += (yDiff / damp);
+  }
 
   console.log('constructor called with ' + id);
   console.log('element = ' + document.getElementById(id));
