@@ -1,5 +1,6 @@
 // Javascript 
-function Circle (id) {
+function Circle (id, x, y, mass) {
+
   this.getSpacials = function() {
     // console.log('move called with ' + centerX + ' ' + centerY);
     var rect = this.el.getBoundingClientRect();
@@ -43,13 +44,28 @@ function Circle (id) {
     this.yVel += (yDiff / damp);
   }
 
-  console.log('constructor called with ' + id);
-  console.log('element = ' + document.getElementById(id));
-
-  this.el = document.getElementById(id);
-  console.log('ID = ' + this.el.id);
+  // constructor called with id, x, y, mass
+  console.log("creating mass: " + id + " " + x + " " + y + " " + mass);
+  var div = document.createElement('div');
+  div.id = "circle" + id;
+  div.style.width = (mass*2) + "px";
+  div.style.height = (mass*2) + "px";
+  div.style.top = (y-mass) + "px";
+  div.style.left = (x-mass) + "px";
+  div.style.borderRadius = mass + "px";
+  div.style.backgroundColor = "red";
+  div.style.position = "absolute";
+  document.body.appendChild(div);
 
   this.xVel = 0;
   this.yVel = 0;
+  this.id = "circle" + id;
+  this.el = div;
 }
+
+// calculate and return center of mass of an array of circles.
+// return in (x, y, mass).
+function MassCenter(circles) {
+
+};
 
